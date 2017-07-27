@@ -1,0 +1,25 @@
+ <div class="login" ng-controller="logincontroller">
+        <div class="login-form">
+            <h3> Login </h3>
+            <form name="LOGINFORM">
+                <div class="form-group">
+                    <label for="login-email">Email address</label>
+                    <input type="email" class="form-control" id="login-email" placeholder="Email" name="email" required="" ng-model="login.email">
+                    <div ng-show="LOGINFORM.email.$error.required">REQUIRED</div>
+
+                    <!-- in line 29&30 $error in  ng-show is checking the errors in the input tag in name attribute -->
+
+                  <div ng-show="LOGINFORM.email.$error.email">Looks like an Invalid E-mail Type</div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" class="form-control" id="login-password" placeholder="Password" required="" ng-model="login.password" name="password" ng-minlength="5" ng-maxlength="10">
+                    <div ng-show="LOGINFORM.password.$error.ng-minlength">Your password is less than 5 characters!</div>
+                    <div ng-show="LOGINFORM.password.$error.ng-maxlength">Your password should be of maximum 10 characters!</div>
+                    <div ng-show="LOGINFORM.password.$error.required">Required!</div>
+                </div>
+                <div class='welcome-message'> welcome back {{email}}</div>
+                <div type="submit" class="btn btn-default" ng-disabled="LOGINFORM.$invalid" ng-click="LoginToWebsite()">Login</div>
+            </form>
+        </div>
+    </div>
